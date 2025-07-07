@@ -3,6 +3,7 @@ import io.qameta.allure.Allure;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -448,6 +449,16 @@ public class BasePage {
 
     public void assertContains(By locator, String partialText){
         softAssert.assertTrue(findElement(locator).getText().contains(partialText), "Text does not contain!");
+    }
+
+    public  void assertPlaceholderText(By locator, String expectedText) {
+
+        try{
+            String actualPlaceholder = getDriver().findElement(locator).getAttribute("placeholder");
+            Assert.assertEquals(actualPlaceholder, expectedText, "Placeholder text does not match!");
+        } catch (Exception e) {
+            assertionHard(locator,expectedText);
+        }
     }
 
 
