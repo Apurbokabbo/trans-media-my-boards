@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 
+import java.util.Random;
+
 public class BoardPage extends BasePage {
 
     public String BOARD_3_DOT_OPTION_MODAL_TITTLE_TEXT = "Board actions";
@@ -20,5 +22,22 @@ public class BoardPage extends BasePage {
     public By BOARD_LIST_2_3_DOT_BUTTON_LOCATOR = By.xpath("(//button[@data-cy='list-options']//*[name()='svg'])[2]");
     public By BOARD_LIST_3_3_DOT_ADD_ANOTHER_CARD_BUTTON = By.xpath("//div[@data-cy='card-add']");
     public By BOARD_LIST_3_3_DOT_DELETE_LIST_BUTTON = By.xpath("//div[@data-cy='delete-list']");
+
+    private static final String[] adjectives = {
+            "Quick", "Bright", "Silent", "Happy", "Agile", "Smart", "Cool", "Bold"
+    };
+
+    private static final String[] nouns = {
+            "Project", "Board", "Task", "Sprint", "Workflow", "Plan", "Roadmap"
+    };
+
+    public static String randomBoardNameGenerator() {
+        Random rand = new Random();
+        String adjective = adjectives[rand.nextInt(adjectives.length)];
+        String noun = nouns[rand.nextInt(nouns.length)];
+        int number = rand.nextInt(1000);  // adds 0-999
+
+        return adjective + noun + number;
+    }
 
 }
