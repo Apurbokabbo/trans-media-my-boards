@@ -93,44 +93,6 @@ public class BasePage {
 
     }
 
-    public void dropDownSelectByVisibleText(By locator, String text)
-    {
-        Select select = new Select(findElement(locator));
-        select.selectByVisibleText(text);
-    }
-
-    public void dropDownSelectByValue(By locator, String text)
-    {
-        Select select = new Select(findElement(locator));
-        select.selectByValue(text);
-    }
-
-    public void dropDownSelectByIndex(By locator, int index)
-    {
-        Select select = new Select(findElement(locator));
-        select.selectByIndex(index);
-
-    }
-
-    public void dropDownDeselectByVisibleText(By locator, String text)
-    {
-        Select select = new Select(findElement(locator));
-        select.deselectByVisibleText(text);
-    }
-
-    public void dropDownDeselectByValue(By locator, String text)
-    {
-        Select select = new Select(findElement(locator));
-        select.deselectByValue(text);
-    }
-
-    public void dropDownDeselectByIndex(By locator, int index)
-    {
-        Select select = new Select(findElement(locator));
-        select.deselectByIndex(index);
-
-    }
-
     public void newTab()
     {
         getDriver().switchTo().newWindow(WindowType.TAB);
@@ -185,13 +147,6 @@ public class BasePage {
         getDriver().navigate().to(url);
     }
 
-
-
-    public void findTotalElement(String tagName)
-    {
-        List<WebElement> elements = getDriver().findElements(By.tagName(tagName));
-        System.out.println(elements.size());
-    }
 
     public void keyboardTab()
     {
@@ -374,14 +329,6 @@ public class BasePage {
         }
     }
 
-
-
-    public void toasterMessageAssertion(By toaster_locator , String expectMessage){
-        isElementVisible(toaster_locator,7);
-        assertionSoft(toaster_locator,expectMessage);
-    }
-
-
     public void saveToFile(String value ,File FILE_PATH) {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
@@ -427,13 +374,5 @@ public class BasePage {
             return null;
         }
     }
-
-
-
-
-
-
-
-
 
 }
