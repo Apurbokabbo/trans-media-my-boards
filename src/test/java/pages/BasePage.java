@@ -93,44 +93,6 @@ public class BasePage {
 
     }
 
-    public void dropDownSelectByVisibleText(By locator, String text)
-    {
-        Select select = new Select(findElement(locator));
-        select.selectByVisibleText(text);
-    }
-
-    public void dropDownSelectByValue(By locator, String text)
-    {
-        Select select = new Select(findElement(locator));
-        select.selectByValue(text);
-    }
-
-    public void dropDownSelectByIndex(By locator, int index)
-    {
-        Select select = new Select(findElement(locator));
-        select.selectByIndex(index);
-
-    }
-
-    public void dropDownDeselectByVisibleText(By locator, String text)
-    {
-        Select select = new Select(findElement(locator));
-        select.deselectByVisibleText(text);
-    }
-
-    public void dropDownDeselectByValue(By locator, String text)
-    {
-        Select select = new Select(findElement(locator));
-        select.deselectByValue(text);
-    }
-
-    public void dropDownDeselectByIndex(By locator, int index)
-    {
-        Select select = new Select(findElement(locator));
-        select.deselectByIndex(index);
-
-    }
-
     public void newTab()
     {
         getDriver().switchTo().newWindow(WindowType.TAB);
@@ -185,13 +147,6 @@ public class BasePage {
         getDriver().navigate().to(url);
     }
 
-
-
-    public void findTotalElement(String tagName)
-    {
-        List<WebElement> elements = getDriver().findElements(By.tagName(tagName));
-        System.out.println(elements.size());
-    }
 
     public void keyboardTab()
     {
@@ -374,59 +329,6 @@ public class BasePage {
         }
     }
 
-
-
-    public void toasterMessageAssertion(By toaster_locator , String expectMessage){
-        isElementVisible(toaster_locator,7);
-        assertionSoft(toaster_locator,expectMessage);
-    }
-
-    public  String generateRandomEmail() {
-        String[] domains = { "gmail.com", "yahoo.com", "outlook.com", "example.com", "domain.com" };
-        Random random = new Random();
-
-        // Generate a random username
-        StringBuilder username = new StringBuilder();
-        for (int i = 0; i < 8; i++) {
-            char randomChar = (char) (random.nextInt(26) + 'a');
-            username.append(randomChar);
-        }
-
-        // Select a random domain
-        String domain = domains[random.nextInt(domains.length)];
-
-        // Combine username and domain to form the email address
-        return username.toString() + "@" + domain;
-    }
-
-//    public  String generatePassword(int length) {
-//        SecureRandom random = new SecureRandom();
-//        StringBuilder password = new StringBuilder();
-//
-//        // Ensure at least one character from each character set
-//        password.append(LOWERCASE_CHARACTERS.charAt(random.nextInt(LOWERCASE_CHARACTERS.length())));
-//        password.append(UPPERCASE_CHARACTERS.charAt(random.nextInt(UPPERCASE_CHARACTERS.length())));
-//        password.append(NUMERIC_CHARACTERS.charAt(random.nextInt(NUMERIC_CHARACTERS.length())));
-//        password.append(SPECIAL_CHARACTERS.charAt(random.nextInt(SPECIAL_CHARACTERS.length())));
-//
-//        // Generate the remaining characters
-//        for (int i = 4; i < length; i++) {
-//            String allCharacters = LOWERCASE_CHARACTERS + UPPERCASE_CHARACTERS + NUMERIC_CHARACTERS + SPECIAL_CHARACTERS;
-//            password.append(allCharacters.charAt(random.nextInt(allCharacters.length())));
-//        }
-//
-//        // Shuffle the generated characters for better randomness
-//        char[] passwordArray = password.toString().toCharArray();
-//        for (int i = passwordArray.length - 1; i > 0; i--) {
-//            int index = random.nextInt(i + 1);
-//            char temp = passwordArray[index];
-//            passwordArray[index] = passwordArray[i];
-//            passwordArray[i] = temp;
-//        }
-//        String pass = new String(passwordArray);
-//        return pass;
-//    }
-
     public void saveToFile(String value ,File FILE_PATH) {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
@@ -460,14 +362,6 @@ public class BasePage {
             assertionHard(locator,expectedText);
         }
     }
-
-
-
-
-
-
-
-
 
 
 }
