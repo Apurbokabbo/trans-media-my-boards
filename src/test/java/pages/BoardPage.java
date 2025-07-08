@@ -1,13 +1,18 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 import java.util.Random;
+
+import static utilities.BaseDriver.getDriver;
 
 public class BoardPage extends BasePage {
 
     public String BOARD_3_DOT_OPTION_MODAL_TITTLE_TEXT = "Board actions";
     public String BOARD_LIST_NAME_INPUT_FIELD_PLACEHOLDER_TEXT = "Enter list title...";
+    public String BOARD_TITTLE_LOCATOR_TEXT = "//div[@class='inline-block invisible px-3 font-bold']";
 
 
     public By BOARD_TITTLE_LOCATOR = By.xpath("//input[@name='board-title']");
@@ -22,6 +27,7 @@ public class BoardPage extends BasePage {
     public By BOARD_LIST_2_3_DOT_BUTTON_LOCATOR = By.xpath("(//button[@data-cy='list-options']//*[name()='svg'])[2]");
     public By BOARD_LIST_3_3_DOT_ADD_ANOTHER_CARD_BUTTON = By.xpath("//div[@data-cy='card-add']");
     public By BOARD_LIST_3_3_DOT_DELETE_LIST_BUTTON = By.xpath("//div[@data-cy='delete-list']");
+    public By BOARD_HOME_BUTTON = By.xpath("//button[@class='visible']");
 
     private static final String[] adjectives = {
             "Quick", "Bright", "Silent", "Happy", "Agile", "Smart", "Cool", "Bold"
@@ -38,6 +44,18 @@ public class BoardPage extends BasePage {
         int number = rand.nextInt(1000);  // adds 0-999
 
         return adjective + noun + number;
+    }
+
+    public String getTextContentByLocator(String locator) {
+        try {
+            WebElement element = getDriver().findElement(By.xpath(locator));
+            JavascriptExecutor js = (JavascriptExecutor) getDriver();
+            String text = (String) js.executeScript("return arguments[0].textContent;", element);
+            return text.trim();
+        } catch (Exception e) {
+            System.out.println("Error getting textContent: " + e.getMessage());
+            return null;
+        }
     }
 
 }
