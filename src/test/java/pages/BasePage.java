@@ -363,5 +363,16 @@ public class BasePage {
         }
     }
 
+    public String getTextContentByLocator(String locator) {
+        try {
+            WebElement element = getDriver().findElement(By.xpath(locator));
+            JavascriptExecutor js = (JavascriptExecutor) getDriver();
+            String text = (String) js.executeScript("return arguments[0].textContent;", element);
+            return text.trim();
+        } catch (Exception e) {
+            System.out.println("Error getting textContent: " + e.getMessage());
+            return null;
+        }
+    }
 
 }

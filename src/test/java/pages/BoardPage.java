@@ -8,6 +8,8 @@ import java.util.Random;
 
 import static utilities.BaseDriver.getDriver;
 
+import java.util.Random;
+
 public class BoardPage extends BasePage {
 
     public String BOARD_3_DOT_OPTION_MODAL_TITTLE_TEXT = "Board actions";
@@ -15,7 +17,7 @@ public class BoardPage extends BasePage {
     public String BOARD_TITTLE_LOCATOR_TEXT = "//div[@class='inline-block invisible px-3 font-bold']";
 
 
-    public By BOARD_TITTLE_LOCATOR = By.xpath("//input[@name='board-title']");
+    public String BOARD_TITTLE_LOCATOR ="//div[@class='inline-block invisible px-3 font-bold']";
     public By BOARD_FAV_ICON_LOCATOR = By.xpath("//div[@data-cy='star']");
     public By BOARD_3_DOT_OPTION_BUTTON = By.xpath("//button[@data-cy='board-options']");
     public By BOARD_3_DOT_OPTION_MODAL_TITTLE_LOCATOR = By.xpath("//div[normalize-space()='Board actions']");
@@ -57,5 +59,8 @@ public class BoardPage extends BasePage {
             return null;
         }
     }
+
+
+
 
 }
