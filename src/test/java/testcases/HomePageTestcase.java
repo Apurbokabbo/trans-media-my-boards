@@ -27,8 +27,9 @@ public class HomePageTestcase extends BaseDriver {
         homePageObj.writeText(homePageObj.HOME_PAGE_CREATE_BOARD_INPUT_FIELD, boardName);
         Thread.sleep(500);
         homePageObj.tabOnEnterOnKeyboard();
-        boardPageObj.fluentWaitClickOnElement(boardPageObj.BOARD_TITTLE_LOCATOR,8);
         homePageObj.isElementVisible(boardPageObj.BOARD_HOME_BUTTON,4);
+        homePageObj.isElementVisible(boardPageObj.BOARD_LIST_ADD_BUTTON,4);
+        Assert.assertFalse(homePageObj.isElementVisible(homePageObj.HOME_PAGE_TITTLE_TEXT_LOCATOR,2), "Home page title is still visible after creating a new board.");
         Assert.assertEquals(boardPageObj.getTextContentByLocator(boardPageObj.BOARD_TITTLE_LOCATOR_TEXT), boardName, "Board title does not match the expected value.");
         homePageObj.takeScreenShotAllureAttach("Create new board and verify board title");
 

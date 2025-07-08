@@ -47,6 +47,14 @@ public class BoardPage extends BasePage {
 
         return adjective + noun + number;
     }
+    private static final String[] LIST_NAMES = {"BackLog", "To Do", "On Hold", "On Process", "QA Review", "Done","PM Review", "Re-Open"
+    };
+
+    private static final Random RANDOM = new Random();
+
+    public static String randomNewListNameCreator() {
+        return LIST_NAMES[RANDOM.nextInt(LIST_NAMES.length)];
+    }
 
     public String getTextContentByLocator(String locator) {
         try {
@@ -58,6 +66,14 @@ public class BoardPage extends BasePage {
             System.out.println("Error getting textContent: " + e.getMessage());
             return null;
         }
+    }
+
+    public void createNewList(String listName) throws InterruptedException {
+       assertPlaceholderText(BOARD_LIST_INPUT_FIELD,BOARD_LIST_NAME_INPUT_FIELD_PLACEHOLDER_TEXT);
+        writeText(BOARD_LIST_INPUT_FIELD, listName);
+        fluentWaitClickOnElement(BOARD_LIST_ADD_BUTTON, 2);
+        isElementVisible(By.xpath("//div[normalize-space()='" + listName + "']"), 4);
+        takeScreenShotAllureAttach("Create new list: " + listName);
     }
 
 
