@@ -18,6 +18,7 @@ public class HomePage extends BasePage{
     public By HOME_PAGE_BOARD_FAV_BUTTON_FIRST = By.xpath("(//div[@class='star']//*[name()='svg'])[1]");
     public By HOME_PAGE_BOARD_FAV_BUTTON_SECOND = By.xpath("(//div[@class='star']//*[name()='svg'])[2]");
     public By HOME_PAGE_BOARD_FAV_BUTTON_THIRD = By.xpath("(//div[@class='star']//*[name()='svg'])[3]");
+        public By HOME_PAGE_BOARD_FAV_BUTTON_FOURTH = By.xpath("(//div[@class='star']//*[name()='svg'])[4]");
 
     private static final String[] adjectives = {
             "Quick", "Bright", "Silent", "Happy", "Agile", "Smart", "Cool", "Bold"
