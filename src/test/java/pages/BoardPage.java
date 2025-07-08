@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import java.util.Random;
 
@@ -25,10 +26,11 @@ public class BoardPage extends BasePage {
     public By BOARD_LIST_INPUT_FIELD = By.xpath("//input[@placeholder='Enter list title...']");
     public By BOARD_LIST_ADD_BUTTON = By.xpath("//button[normalize-space()='Add list']");
     public By BOARD_LIST_ADD_ANOTHER_LIST_BUTTON = By.xpath("//div[@data-cy='create-list' and contains(text(), 'Add another list')]");
-    public By BOARD_LIST_1_3_DOT_BUTTON_LOCATOR = By.xpath("(//button[@data-cy='list-options']//*[name()='svg'])[1]");
+    public By BOARD_LIST_1_3_DOT_BUTTON_LOCATOR = By.xpath("(//button[@data-cy='list-options'])[1]");
     public By BOARD_LIST_2_3_DOT_BUTTON_LOCATOR = By.xpath("(//button[@data-cy='list-options']//*[name()='svg'])[2]");
     public By BOARD_LIST_3_3_DOT_ADD_ANOTHER_CARD_BUTTON = By.xpath("//div[@data-cy='card-add']");
     public By BOARD_LIST_3_3_DOT_DELETE_LIST_BUTTON = By.xpath("//div[@data-cy='delete-list']");
+    public By BOARD_LIST_3_DOT_MODAL_TITTLE_LOCATOR = By.xpath("//div[text()='List actions']");
     public By BOARD_HOME_BUTTON = By.xpath("//button[@class='visible']");
 
     private static final String[] adjectives = {
@@ -69,7 +71,15 @@ public class BoardPage extends BasePage {
     }
 
     public void createNewList(String listName) throws InterruptedException {
-       assertPlaceholderText(BOARD_LIST_INPUT_FIELD,BOARD_LIST_NAME_INPUT_FIELD_PLACEHOLDER_TEXT);
+
+       try {
+           findElement(BOARD_LIST_ADD_BUTTON);
+           assertPlaceholderText(BOARD_LIST_INPUT_FIELD,BOARD_LIST_NAME_INPUT_FIELD_PLACEHOLDER_TEXT);
+       }
+       catch (Exception e) {
+           fluentWaitClickOnElement(BOARD_LIST_ADD_ANOTHER_LIST_BUTTON, 2);
+           assertPlaceholderText(BOARD_LIST_INPUT_FIELD,BOARD_LIST_NAME_INPUT_FIELD_PLACEHOLDER_TEXT);
+       }
         writeText(BOARD_LIST_INPUT_FIELD, listName);
         fluentWaitClickOnElement(BOARD_LIST_ADD_BUTTON, 2);
         isElementVisible(By.xpath("//div[normalize-space()='" + listName + "']"), 4);
