@@ -24,6 +24,11 @@ This is an automated testing framework for the My Boards Panel web application, 
 ## Project Structure
 ```
 trans-media-my-boards/
+|---- API Automation Postman/
+|           |- my-board-env.postman_environment.json
+|           |- QA Automation Home Assignment.postman_collection.json
+|           |- QA Automation Home Assignment-2025-07-09-06-57-49-901-0.html
+|
 ├── src/
 │   ├── main/
 │   │   └── java/
