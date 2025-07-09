@@ -26,28 +26,36 @@ This is an automated testing framework for the My Boards Panel web application, 
 trans-media-my-boards/
 ├── src/
 │   ├── main/
-│   │   (empty or not shown)
+│   │   └── java/
+│   │       └── org/example/     # Main source directory
+│   │           └── Main.java
 │   │
 │   └── test/
 │       └── java/
-│           ├── pages/               # Page Object classes
-│           ├── testcases/           # Test case classes
-│           │   ├── BoardPageTestcase.java
-│           │   └── HomePageTestcase.java
-│           └── utilities/           # Helper classes
-│
-│       └── resources/               # Resource files (images for reports)
+│       |   ├── pages/           # Page Object classes
+│       |   │   ├── BasePage.java
+│       |   │   ├── BoardPage.java
+│       |   │   └── HomePage.java
+│       |   │
+│       |   ├── testcases/       # Test case classes
+│       |   │   ├── BoardPageTestcase.java
+│       |   │   └── HomePageTestcase.java
+│       |   │
+│       |   └── utilities/       # Helper classes
+│       |       ├── BaseDriver.java
+│       |       └── URLs.java
+|       └── resources/               # Resource files (images for reports)
 │           ├── Overview.png
 │           └── Testdetails.png
 │
-├── target/                          # Maven build output
+├── .idea/                       # IntelliJ project files
+│   ├── encodings.xml
+│   ├── misc.xml
+│   ├── vcs.xml
+│   └── ...
 │
-├── .gitignore                       # Git ignore rules
-├── pom.xml                          # Maven configuration
-├── README.md                        # Project documentation
-├── RegressionTestSuite.xml          # TestNG regression suite
-└── SmokeTestSuite.xml               # TestNG smoke suite
-
+├── .gitignore                   # Git ignore rules
+└── pom.xml   
 
 ```
 
